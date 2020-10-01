@@ -12,11 +12,11 @@ export default function DataTable({ columns, rows }) {
   const renderTableBody =() => {
     return rows.map((row, i) => (
       <tr>
+        <td>{row.albumId}</td>
         <td>{row.id}</td>
-        <td>{row.product}</td>
-        <td>{row.price}</td>
-        <td>{row.id + 1}</td>
-        <td>{row.id + 2}</td>
+        <td>{row.thumbnailUrl}</td>
+        <td>{row.title}</td>
+        <td>{row.url}</td>
       </tr>
     ))
   }
