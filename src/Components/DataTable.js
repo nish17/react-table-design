@@ -14,9 +14,9 @@ export default function DataTable({ columns, rows }) {
       <tr>
         <td>{row.albumId}</td>
         <td>{row.id}</td>
-        <td>{row.thumbnailUrl}</td>
         <td>{row.title}</td>
         <td>{row.url}</td>
+        <td>{row.thumbnailUrl}</td>
       </tr>
     ))
   }
