@@ -9,17 +9,21 @@ export default function DataTable({ columns, rows }) {
     ));
   };
 
-  const renderTableBody =() => {
+  const renderTableBody = () => {
     return rows.map((row, i) => (
       <tr>
         <td>{row.albumId}</td>
         <td>{row.id}</td>
         <td>{row.title}</td>
-        <td>{row.url}</td>
-        <td>{row.thumbnailUrl}</td>
+        <td>
+          <a href={row.url}>{row.url}</a>
+        </td>
+        <td>
+          <img src={row.thumbnailUrl} alt='img' />
+        </td>
       </tr>
-    ))
-  }
+    ));
+  };
 
   return (
     <div>
@@ -28,9 +32,7 @@ export default function DataTable({ columns, rows }) {
         <thead>
           <tr>{renderTableHeader()}</tr>
         </thead>
-        <tbody>
-          {renderTableBody()}
-        </tbody>
+        <tbody>{renderTableBody()}</tbody>
       </table>
     </div>
   );
