@@ -11,7 +11,7 @@ export default function DataTable({ columns, rows }) {
 
   const renderTableBody = () => {
     return rows.map((row, i) => (
-      <tr>
+      <tr key={i}>
         <td>{row.albumId}</td>
         <td>{row.id}</td>
         <td>{row.title}</td>
