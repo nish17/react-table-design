@@ -17,7 +17,7 @@ function App() {
       const { allColumns, allRows } = await fetchAndConvertData();
       setAPIData(allRows);
       // setRows(allRows)
-      setRows([...allRows.slice(0,10)])
+      setRows([...allRows.slice(0, 10)]);
       // setRows(prevRows => [...prevRows, ...APIData.slice(((pageIncrement-1)*10), (pageIncrement*10))]);
       setColumns(allColumns);
       setIsLoading(false);
@@ -28,19 +28,26 @@ function App() {
   const scrollObserver = useCallback((node) => {
     new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.intersectionRatio > 0) {
           setPageIncrement((prevPageNumber) => prevPageNumber + 1);
-          setRows(prevRows => [...prevRows, ...APIData.slice(((pageIncrement-1)*10), (pageIncrement*10))]);
         }
       });
     }).observe(node);
-  }, [APIData,pageIncrement]);
+  }, []);
 
   useEffect(() => {
     if (bottomBoundaryRef.current) {
       scrollObserver(bottomBoundaryRef.current);
     }
   }, [scrollObserver, bottomBoundaryRef]);
+
+  useEffect(() => {
+    setRows((prevRows) =>
+      prevRows.concat(
+        APIData.slice((pageIncrement - 1) * 10, pageIncrement * 10)
+      )
+    );
+  }, [APIData, pageIncrement]);
 
   return (
     <div className='App'>
@@ -52,7 +59,7 @@ function App() {
       {isLoading && <div>Loading...</div>}
       <div
         id='page-bottom-boundary'
-        style={{ border: '1px solid red' }}
+        style={{ border: '5px solid red' }}
         ref={bottomBoundaryRef}
       ></div>
     </div>
