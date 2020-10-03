@@ -17,7 +17,7 @@ function App() {
       const { allColumns, allRows } = await fetchAndConvertData();
       setAPIData(allRows);
       // setRows(allRows)
-      setRows([...allRows.slice(0, 10)]);
+      setRows([...allRows.slice(0, 20)]);
       // setRows(prevRows => [...prevRows, ...APIData.slice(((pageIncrement-1)*10), (pageIncrement*10))]);
       setColumns(allColumns);
       setIsLoading(false);
