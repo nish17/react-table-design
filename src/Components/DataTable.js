@@ -7,7 +7,7 @@ export default function DataTable({ columns, rows, onRowClick }) {
 
   const renderTableHeader = () => {
     return columns.map((col, i) => (
-      <th key={i} style={col.style}>
+      <th key={i}>
         {col.label.toUpperCase()}
       </th>
     ));
