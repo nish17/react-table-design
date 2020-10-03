@@ -9,6 +9,7 @@ async function getData() {
   try {
     response = await axios.get(URL);
     allRows = response.data;
+    // return response.data
   } catch (e) {
     console.log('something went wrong ', e);
   }
@@ -23,6 +24,7 @@ function convertDataToColumns(data) {
     columnData['numeric'] = i % 2 === 0 ? true : false;
     columnData['style'] = {
       width: i % 2 === 0 ? '200px' : 'auto',
+      textAlign: i % 2 === 0 ? 'right' : 'left'
     };
     allColumns.push(columnData);
   });
@@ -31,6 +33,6 @@ function convertDataToColumns(data) {
 
 export async function fetchAndConvertData() {
   const data = await getData();
-  allColumns = await convertDataToColumns(Object.keys(data[0]));
+  allColumns = convertDataToColumns(Object.keys(data[0]));
   return { allColumns, allRows };
 }
