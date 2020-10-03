@@ -8,7 +8,7 @@ function App() {
   const [APIData, setAPIData] = useState([]);
   const [rows, setRows] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [pageIncrement, setPageIncrement] = useState(1);
+  const [pageIncrement, setPageIncrement] = useState(2);
   let bottomBoundaryRef = useRef(null);
 
   useEffect(() => {
@@ -16,9 +16,7 @@ function App() {
       setIsLoading(true);
       const { allColumns, allRows } = await fetchAndConvertData();
       setAPIData(allRows);
-      // setRows(allRows)
       setRows([...allRows.slice(0, 20)]);
-      // setRows(prevRows => [...prevRows, ...APIData.slice(((pageIncrement-1)*10), (pageIncrement*10))]);
       setColumns(allColumns);
       setIsLoading(false);
     }
@@ -53,7 +51,7 @@ function App() {
     <div className='App'>
       {!isLoading && (
         <div>
-          <DataTable columns={columns} rows={rows} />
+          <DataTable columns={columns} rows={rows} onRowClick={(e) => null}/>
         </div>
       )}
       {isLoading && <div>Loading...</div>}
