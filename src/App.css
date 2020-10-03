@@ -55,7 +55,16 @@ tr,td {
   border: solid thin;
 }
 
+tr:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+
 .app-container {
   margin: 10px;
   padding: 10px;
+}
+
+.row-selected {
+  background-color: grey;
 }
