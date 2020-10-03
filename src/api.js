@@ -23,7 +23,7 @@ function convertDataToColumns(data) {
     columnData['label'] = d;
     columnData['numeric'] = i % 2 === 0 ? true : false;
     columnData['style'] = {
-      width: i % 2 === 0 ? '200px' : 'auto',
+      width: i % 2 === 0 ? '150px' : 'auto',
       textAlign: i % 2 === 0 ? 'right' : 'left'
     };
     allColumns.push(columnData);
