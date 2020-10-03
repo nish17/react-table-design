@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
 import '../App.css';
 
-export default function DataTable({ columns, rows, onRowClick }) {
+export default function DataTable({ columns, rows, onRowClick, onSelectionChange }) {
   const [checkedIds, setCheckedIds] = useState([]);
   const [checkBox, setCheckBox] = useState(false);
 
   const renderTableHeader = () => {
-    return columns.map((col, i) => (
-      <th key={i}>
-        {col.label.toUpperCase()}
-      </th>
-    ));
+    return columns.map((col, i) => <th key={i}>{col.label.toUpperCase()}</th>);
   };
 
   const handleSingleCheckBoxClick = (event, id) => {
@@ -40,6 +36,7 @@ export default function DataTable({ columns, rows, onRowClick }) {
           style={{ height: '160px' }}
           className={isRowSelected ? 'row-selected' : ''}
           onClick={onRowClick}
+          onChange={onSelectionChange}
         >
           <td>
             <input
