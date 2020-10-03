@@ -17,13 +17,13 @@ On Scroll, we keep on swapping the elements which are not visible. It helps in i
 
 ## Approach:
 
-1 After fetching the data from the API, I convert it two different Arrays.
+1. After fetching the data from the API, I convert it two different Arrays.
   - Columns Array
   - Rows Array
 
-2 I keep the first 20 elements of Rows in the initial 
+2. I keep the first 20 elements of Rows in the initial 
 
-3 Using IntersectionObserver API, I check if the user has already scrolled to the bottom most part section, and if that's case, I keep on appending more results to the existing state.
+3. Using [IntersectionObserver API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API), I check if the user has already scrolled to the bottom most part section, and if that's case, I keep on appending more results to the existing state.
 
 ## Assumptions
 
