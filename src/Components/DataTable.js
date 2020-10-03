@@ -4,6 +4,7 @@ import '../App.css';
 export default function DataTable({ columns, rows, onRowClick }) {
   const [checkedIds, setCheckedIds] = useState([]);
   const [checkBox, setCheckBox] = useState(false);
+
   const renderTableHeader = () => {
     return columns.map((col, i) => (
       <th key={i} style={col.style}>
@@ -34,7 +35,12 @@ export default function DataTable({ columns, rows, onRowClick }) {
       const { albumId, id, title, url, thumbnailUrl } = row;
       const isRowSelected = checkedIds.includes(id);
       return (
-        <tr key={i} style={{ height: '160px' }} className={isRowSelected?"row-selected":""} onClick={onRowClick}>
+        <tr
+          key={i}
+          style={{ height: '160px' }}
+          className={isRowSelected ? 'row-selected' : ''}
+          onClick={onRowClick}
+        >
           <td>
             <input
               type='checkbox'
@@ -42,13 +48,13 @@ export default function DataTable({ columns, rows, onRowClick }) {
               onChange={(e) => handleSingleCheckBoxClick(e, id)}
             />
           </td>
-          <td>{albumId}</td>
-          <td>{id}</td>
-          <td>{title}</td>
-          <td>
+          <td style={columns[0].style}>{albumId}</td>
+          <td style={columns[1].style}>{id}</td>
+          <td style={columns[2].style}>{title}</td>
+          <td style={columns[3].style}>
             <a href={url}>{url}</a>
           </td>
-          <td>
+          <td style={columns[4].style}>
             <img src={thumbnailUrl} alt='img' />
           </td>
         </tr>
