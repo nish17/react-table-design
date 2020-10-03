@@ -51,7 +51,7 @@ function App() {
     <div className='App'>
       {!isLoading && (
         <div>
-          <DataTable columns={columns} rows={rows} onRowClick={(e) => null}/>
+          <DataTable columns={columns} rows={rows} onRowClick={(e) => null} onSelectionChange={(e) => null}/>
         </div>
       )}
       {isLoading && <div>Loading...</div>}
