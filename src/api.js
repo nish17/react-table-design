@@ -23,8 +23,8 @@ function convertDataToColumns(data) {
     columnData['label'] = d;
     columnData['numeric'] = i % 2 === 0 ? true : false;
     columnData['style'] = {
-      width: i % 2 === 0 ? '150px' : 'auto',
-      textAlign: i % 2 === 0 ? 'right' : 'left'
+      width: i % 2 === 0 ? 'auto' : '150px',
+      textAlign: i % 2 === 0 ? 'center' : 'right'
     };
     allColumns.push(columnData);
   });
