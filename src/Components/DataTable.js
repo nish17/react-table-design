@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../App.css';
 
-export default function DataTable({ columns, rows, onRowClick, onSelectionChange }) {
+export default function DataTable({
+  columns,
+  rows,
+  onRowClick,
+  onSelectionChange,
+}) {
   const [checkedIds, setCheckedIds] = useState([]);
   const [checkBox, setCheckBox] = useState(false);
 
@@ -25,6 +30,12 @@ export default function DataTable({ columns, rows, onRowClick, onSelectionChange
       setCheckedIds([]);
     }
   };
+
+  useEffect(() => {
+    if (checkBox) {
+      setCheckedIds([...rows.map((row) => row.id)]);
+    }
+  }, [checkBox, rows]);
 
   const renderTableBody = () => {
     return rows.map((row, i) => {
